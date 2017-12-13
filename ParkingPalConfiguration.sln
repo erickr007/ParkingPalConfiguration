@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ParkingPalApp", "ParkingPalApp\", "{F6C8D2AC-F25C-4678-9545-58275D329D83}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_18523"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\Development\SourceCode\ParkingPal\ParkingPalApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18523\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_18523"
+		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\Development\SourceCode\ParkingPal\ParkingPalApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18523\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "18523"
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingPalAPI", "ParkingPalAPI\ParkingPalAPI.csproj", "{993FD66A-B78F-4B63-8B2E-39715722F57C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6C8D2AC-F25C-4678-9545-58275D329D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C8D2AC-F25C-4678-9545-58275D329D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6C8D2AC-F25C-4678-9545-58275D329D83}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6C8D2AC-F25C-4678-9545-58275D329D83}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{993FD66A-B78F-4B63-8B2E-39715722F57C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{993FD66A-B78F-4B63-8B2E-39715722F57C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{993FD66A-B78F-4B63-8B2E-39715722F57C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{993FD66A-B78F-4B63-8B2E-39715722F57C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1890205-9C35-4434-8B92-F0BEA48148E6}
+	EndGlobalSection
+EndGlobal
