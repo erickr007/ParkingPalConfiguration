@@ -107,7 +107,7 @@ namespace ParkingPalAPI.Models
 
     public enum ParkingTypes
     {
-        Meter = 0,
+        Street = 0,
         Structure = 1,
         Lot = 2,
         Residence = 3,

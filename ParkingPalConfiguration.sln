@@ -7,20 +7,21 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ParkingPalApp", "ParkingPal
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_18523"
-		Debug.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\Development\SourceCode\ParkingPal\ParkingPalApp\"
+		Debug.AspNetCompiler.PhysicalPath = "ParkingPalApp\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18523\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_18523"
-		Release.AspNetCompiler.PhysicalPath = "..\..\..\..\..\..\Development\SourceCode\ParkingPal\ParkingPalApp\"
+		Release.AspNetCompiler.PhysicalPath = "ParkingPalApp\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_18523\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "18523"
+		SlnRelativePath = "ParkingPalApp\"
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingPalAPI", "ParkingPalAPI\ParkingPalAPI.csproj", "{993FD66A-B78F-4B63-8B2E-39715722F57C}"

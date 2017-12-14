@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms'
+import { RouterModule } from '@angular/router'
 import { NgModule } from '@angular/core';
+import { ParkingLocationsModule } from "./parkinglocations.module"
 
 import { AppComponent } from './components/app/app.component';
 
@@ -8,7 +11,13 @@ import { AppComponent } from './components/app/app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+      BrowserModule,
+      FormsModule,
+      ParkingLocationsModule,
+      RouterModule.forRoot([
+          { path: "", redirectTo: 'locations' },
+          { path: "**", redirectTo: 'locations' }
+      ])
   ],
   providers: [],
   bootstrap: [AppComponent]

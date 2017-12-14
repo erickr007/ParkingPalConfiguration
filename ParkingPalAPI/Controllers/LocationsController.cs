@@ -14,13 +14,13 @@ namespace ParkingPalAPI.Controllers
     [Route("api/locations")]
     public class LocationsController : Controller
     {
-        private DataAccessService DataService;
+        private DataAccessService _dataAccessService;
 
         #region Constructor
 
         public DataController(DataAccessService service)
         {
-            this.DataService = service;
+            this._dataAccessService = service;
         }
 
         #endregion
@@ -34,7 +34,7 @@ namespace ParkingPalAPI.Controllers
         [Route("")]
         public List<ParkingLocation> Get()
         {
-            return new List<ParkingLocation>();
+            return _dataAccessService.GetAllLocations();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace ParkingPalAPI.Controllers
         [Route("{id: string}")]
         public ParkingLocation Get(string id)
         {
-            return new ParkingLocation();
+            return _dataAccessService.GetParkingLocation(id);
         }
 
         #endregion
@@ -51,10 +51,22 @@ namespace ParkingPalAPI.Controllers
 
         #region Post Actions
 
+        /// <summary>
+        /// Inserts a new ParkingLocation record
+        /// </summary>
         [Route("add")]
         [HttpPost]
-        public ActionResult AddLocation(ParkingLocation location)
+        public ActionResult AddLocation([FromBody]ParkingLocation location)
         {
+            try
+            {
+                _dataAccessService.InsertParkingLocation(location);
+            }
+            catch(Exception ex)
+            {
+                return new StatusCodeResult(500);
+            }
+
             return new StatusCodeResult(200);
         }
 

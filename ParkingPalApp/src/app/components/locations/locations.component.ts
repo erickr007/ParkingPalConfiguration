@@ -1,5 +1,8 @@
 import { Component } from '@angular/core'
 
+//- services
+import { LocationsService } from "../../services/locations/locations.service"
+
 @Component({
     templateUrl: "./locations.component.html"
 
@@ -7,7 +10,7 @@ import { Component } from '@angular/core'
 
 export class LocationsComponent {
 
-    constructor() {
+    constructor(locationService: LocationsService) {
 
     }
 }
