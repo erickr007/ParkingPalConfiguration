@@ -4,19 +4,22 @@ import { RouterModule } from '@angular/router'
 import { NgModule } from '@angular/core';
 import { ParkingLocationsModule } from "./parkinglocations.module"
 
-import { AppComponent } from './components/app/app.component';
+import { AppComponent } from './components/app/app.component'
+import { HomeComponent } from './components/home/home.component'
 
 @NgModule({
   declarations: [
-    AppComponent
+      AppComponent,
+      HomeComponent
   ],
   imports: [
       BrowserModule,
       FormsModule,
       ParkingLocationsModule,
       RouterModule.forRoot([
-          { path: "", redirectTo: 'locations' },
-          { path: "**", redirectTo: 'locations' }
+          { path: "home", component: HomeComponent },
+          { path: "", redirectTo: 'home', pathMatch: "full" },
+          { path: "**", redirectTo: 'home' }
       ])
   ],
   providers: [],
