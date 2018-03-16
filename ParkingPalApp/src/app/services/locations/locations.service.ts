@@ -24,4 +24,21 @@ export class LocationsService {
 
         return val;
     }
+
+    //- Add Parking Location
+    public AddParkingLocation(location: ParkingLocationModel) {
+      var val = this.http.post(this.apiURL + "locations/add", JSON.stringify(location)).map(
+        (response: Response) => {
+          return response.json();
+        }
+      );
+      //map(
+      //  (response: Response) => {
+      //    return response.json();
+      //  }
+      //);
+
+      return val;
+    }
+  
 }

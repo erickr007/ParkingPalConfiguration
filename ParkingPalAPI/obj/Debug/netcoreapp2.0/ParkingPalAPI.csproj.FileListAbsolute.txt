@@ -9,3 +9,14 @@ C:\Development\SourceCode\ParkingPal\ParkingPalAPI\obj\Debug\netcoreapp2.0\Parki
 C:\Development\SourceCode\ParkingPal\ParkingPalAPI\bin\Debug\netcoreapp2.0\ParkingPalAPI.pdb
 C:\Development\SourceCode\ParkingPal\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.dll
 C:\Development\SourceCode\ParkingPal\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.pdb
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.csproj.CoreCompileInputs.cache
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.AssemblyInfoInputs.cache
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.AssemblyInfo.cs
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.dll
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.pdb
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\bin\Debug\netcoreapp2.0\ParkingPalAPI.deps.json
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\bin\Debug\netcoreapp2.0\ParkingPalAPI.runtimeconfig.json
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\bin\Debug\netcoreapp2.0\ParkingPalAPI.runtimeconfig.dev.json
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\bin\Debug\netcoreapp2.0\ParkingPalAPI.dll
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\bin\Debug\netcoreapp2.0\ParkingPalAPI.pdb
+C:\Development\SourceCode\ParkingPalConfiguration\ParkingPalAPI\obj\Debug\netcoreapp2.0\ParkingPalAPI.csprojResolveAssemblyReference.cache

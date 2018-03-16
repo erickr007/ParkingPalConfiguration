@@ -1,0 +1,38 @@
+<div class="container">
+  <p class="lead">
+    Add a new parking location.
+  </p>
+
+  <form #locationForm="ngForm" (ngSubmit)="locationSubmit()">
+    <div class="form-group">
+      <label for="tt">Title</label>
+      <input id="tt" name="tt" type="text" class="form-control" [(ngModel)]="location.tt" required />
+    </div>
+    <div class="form-group">
+      <label for="ad">Address</label>
+      <input id="ad" name="ad" type="text" class="form-control" (focusout)="closeSuggestList()"
+             (ngModelChange)="addressChanged($event)" [(ngModel)]="location.ad" required />
+      <ul *ngIf="displaySuggest" style="position:absolute;margin-top:10px;list-style-type:none;background-color:white;z-index:99">
+        <li style="margin-left:-35px" *ngFor="let s of suggestions">
+          <a href="javascript:void(0);" (click)="selectedAddress(s)"> {{s.text}} </a>
+        </li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <label for="pt">Parking Type</label>
+      <input id="pt" name="pt" type="text" class="form-control"  [(ngModel)]="location.pt" />
+    </div>
+    <div class="form-group">
+      <label for="ds">Description</label>
+      <textarea id="ds" name="ds" type="text" class="form-control"  [(ngModel)]="location.ds"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="ws">Web URL</label>
+      <input id="ws" name="ws" type="text" class="form-control"  [(ngModel)]="location.ws" />
+    </div>
+    
+    <p class="lead">
+      <button class="btn btn-primary btn-lg" href="#" [disabled]="!locationForm.form.valid" type="submit">Add Location</button>
+    </p>
+  </form>
+</div>

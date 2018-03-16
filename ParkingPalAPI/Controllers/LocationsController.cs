@@ -7,18 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 using ParkingPalAPI.Services;
 using ParkingPalAPI.Models;
 using System.Net.Http;
+using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json;
 
 namespace ParkingPalAPI.Controllers
 {
+    [EnableCors("AllowAll")]
     [Produces("application/json")]
-    [Route("api/locations")]
+    [Route("Locations")]
     public class LocationsController : Controller
     {
         private DataAccessService _dataAccessService;
 
         #region Constructor
 
-        public DataController(DataAccessService service)
+        public LocationsController(DataAccessService service)
         {
             this._dataAccessService = service;
         }
@@ -40,11 +43,11 @@ namespace ParkingPalAPI.Controllers
         /// <summary>
         /// Returns a Location with the specified id
         /// </summary>
-        [Route("{id: string}")]
-        public ParkingLocation Get(string id)
-        {
-            return _dataAccessService.GetParkingLocation(id);
-        }
+        //[Route("{id:string}", Name="GetID")]
+        //public ParkingLocation Get(string id)
+        //{
+        //    return _dataAccessService.GetParkingLocation(id);
+        //}
 
         #endregion
 
@@ -54,20 +57,24 @@ namespace ParkingPalAPI.Controllers
         /// <summary>
         /// Inserts a new ParkingLocation record
         /// </summary>
-        [Route("add")]
+        [EnableCors("AllowAll")]
         [HttpPost]
-        public ActionResult AddLocation([FromBody]ParkingLocation location)
+        [Route("Add")]
+        public void AddLocation([FromBody]string locationJson)
         {
+            ParkingLocation location = JsonConvert.DeserializeObject<ParkingLocation>(locationJson);
             try
             {
+                location.GlobalID = Guid.NewGuid().ToString();
+
                 _dataAccessService.InsertParkingLocation(location);
             }
             catch(Exception ex)
             {
-                return new StatusCodeResult(500);
+                //return new StatusCodeResult(500);
             }
 
-            return new StatusCodeResult(200);
+            //return new StatusCodeResult(200);
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using ParkingPalAPI.Models;
+﻿
+using ParkingPalAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -32,7 +33,7 @@ namespace ParkingPalAPI.Services
 
         public DataAccessService()
         {
-            _connectionString = "";
+            _connectionString = @"Server=tcp:shermanpark.database.windows.net,1433;Initial Catalog=parkingpal;Persist Security Info=False;User ID=erkeith;Password=ttReb00t!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
 
         #endregion
@@ -184,8 +185,8 @@ namespace ParkingPalAPI.Services
         public void InsertParkingLocation(ParkingLocation location)
         {
             string insertComand = "INSERT INTO ParkingLocations(";
-            insertComand += "GlobalID, Title, Address, Latitude, Longitude, ParkingType, HasValet, Description, Website, DateCreated) ";
-            insertComand += "Values(@GlobalID, @Title, @Address, @Latitude, @Longitude, @ParkingType, @HasValet, @Description, @Website, @DateCreated)";
+            insertComand += "GlobalID, Title, Address, Latitude, Longitude, ParkingType, HasValet, Description, Website, DateCreated, LocationPoint) ";
+            insertComand += "Values(@GlobalID, @Title, @Address, @Latitude, @Longitude, @ParkingType, @HasValet, @Description, @Website, @DateCreated, @LocationPoint)";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -203,6 +204,8 @@ namespace ParkingPalAPI.Services
                     command.Parameters.Add(new SqlParameter("@Description", location.Description));
                     command.Parameters.Add(new SqlParameter("@Website", location.Website));
                     command.Parameters.Add(new SqlParameter("@DateCreated", DateTime.UtcNow));
+                    string locationPoint = $"POINT({location.Longitude} {location.Latitude})";
+                    command.Parameters.Add(new SqlParameter("@LocationPoint", locationPoint));
 
                     command.ExecuteNonQuery();
                 }

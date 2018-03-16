@@ -1,0 +1,16 @@
+$bg: blue;
+$ff: 'arial';
+
+@import 'colors';
+@import 'mixins';
+
+body{
+    //background: $bg;
+    font-family: $ff;
+}
+
+#box{
+  @include border-radius(5px);
+  height: 120px;
+  width: 120px;
+}

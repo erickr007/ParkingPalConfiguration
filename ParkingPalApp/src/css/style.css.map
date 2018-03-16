@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,KAAM;EAAE,KAAK,EAAE,IAAI;;AACnB,KAAM;EAAE,KAAK,EAAE,IAAI;;ACInB,IAAI;EAEA,WAAW,EAPV,OAAO;;AAUZ,IAAI;ECTF,qBAAqB,EDUE,GAAG;ECT1B,kBAAkB,EDSK,GAAG;ECR1B,iBAAiB,EDQM,GAAG;ECP1B,aAAa,EDOU,GAAG;EAC1B,MAAM,EAAE,KAAK;EACb,KAAK,EAAE,KAAK",
+"sources": ["../scss/_colors.scss","../scss/style.scss","../scss/_mixins.scss"],
+"names": [],
+"file": "style.css"
+}
