@@ -4,5 +4,5 @@ import { SpatialReferenceModel } from "./spatialreference.model"
 
 export class GeocodeResponseModel{
   spatialReference: SpatialReferenceModel;
-  locations: GeocodeCandidateModel[];
+  candidates: GeocodeCandidateModel[];
 }

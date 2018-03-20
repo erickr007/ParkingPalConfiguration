@@ -177,6 +177,35 @@ namespace ParkingPalAPI.Services
             return location;
         }
 
+
+        public List<ParkingLocation> GetLocationsWithinEnvelope()
+        {
+            List<ParkingLocation> locations = new List<ParkingLocation>();
+
+            string selectCommand = "SELECT * FROM ParkingLocations WHERE @Envelope.STContains(LocationPoint)";
+            //32.709528, -117.170906
+            //32.710729, -117.128088
+            //32.739684, -117.128903
+            //32.744172, -117.180230
+
+            using (SqlConnection connection= new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using(SqlCommand command = new SqlCommand(selectCommand, connection))
+                {
+                    SqlParameter envelopeParam = new SqlParameter("@Envelope", "POLYGON((-117.170906 32.709528, -117.128088 32.710729,-117.128903 32.739684,-117.180230 32.744172), 4326)");
+                    command.Parameters.Add(envelopeParam);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+
+                    }
+                }
+            }
+
+            return locations;
+        }
+
         #endregion
 
 

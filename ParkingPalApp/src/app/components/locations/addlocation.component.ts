@@ -28,27 +28,28 @@ export class AddLocationComponent {
 
   }
 
-  locationSubmit() {
-    console.log(this.location);
-
+  locationSubmit(locationForm: NgForm) {
+    console.log(locationForm);
+    
     //- try geocode address
     this.geocodeService.findAddressCandidate(this.location.ad).subscribe(
       (response: GeocodeResponseModel) => {
-        console.log(response);
+        //console.log(response);
 
-        if (response.locations.length == 0) {
+        if (response.candidates.length == 0) {
           alert("Address could not be geocoded.  Please update and resubmit");
           return;
         }
 
         //- get first candidate coordinates
-        this.location.lg = response.locations[0].location.y;
-        this.location.lt = response.locations[0].location.x;
+        this.location.lg = response.candidates[0].location.x;
+        this.location.lt = response.candidates[0].location.y;
 
         //- upon successful geocode complete submit to server
         this.locationService.AddParkingLocation(this.location).subscribe(
           (response: any) => {
             console.log("add complete");
+            locationForm.reset();
           },
           (error: any) => {
 

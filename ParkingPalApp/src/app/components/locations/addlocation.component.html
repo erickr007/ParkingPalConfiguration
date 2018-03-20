@@ -3,14 +3,14 @@
     Add a new parking location.
   </p>
 
-  <form #locationForm="ngForm" (ngSubmit)="locationSubmit()">
+  <form #locationForm="ngForm" (ngSubmit)="locationSubmit(locationForm)">
     <div class="form-group">
       <label for="tt">Title</label>
       <input id="tt" name="tt" type="text" class="form-control" [(ngModel)]="location.tt" required />
     </div>
     <div class="form-group">
       <label for="ad">Address</label>
-      <input id="ad" name="ad" type="text" class="form-control" (focusout)="closeSuggestList()"
+      <input id="ad" name="ad" type="text" class="form-control" 
              (ngModelChange)="addressChanged($event)" [(ngModel)]="location.ad" required />
       <ul *ngIf="displaySuggest" style="position:absolute;margin-top:10px;list-style-type:none;background-color:white;z-index:99">
         <li style="margin-left:-35px" *ngFor="let s of suggestions">
