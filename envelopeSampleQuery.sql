@@ -1,0 +1,3 @@
+﻿EXEC getLocationsWithinEnvelope '-120', '-116', '-31', '33' 
+--SELECT * FROM ParkingLocations WHERE geography::STPointFromText('POINT(' + CAST(Longitude as VARCHAR(20)) + ' ' + CAST(Latitude as VARCHAR(20)) + ')',4326).STWithin(geography::STPolyFromText('POLYGON((-118.18023 31.709528, -118.18023 33.739684, -113.128088 33.739684, -113.128088 31.709528, -118.18023 31.709528))', 4326)) = 0
+--SELECT * FROM ParkingLocations WHERE geography::STPolyFromText('POLYGON((-117.170906 32.709528, -117.128088 32.710729,-117.128903 32.739684,-117.180230 32.744172,-117.170906 32.709528))', 4326).STContains(LocationPoint) = 1

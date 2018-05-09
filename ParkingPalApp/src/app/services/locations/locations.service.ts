@@ -17,7 +17,7 @@ export class LocationsService {
 
     //- Get All ParkingLocations
     public GetAllParkingLocations(): Observable<ParkingLocationModel[]> {
-        var val = this.http.get(this.apiURL).
+        var val = this.http.get(this.apiURL + "Locations").
             map((locations: Response) => {
                 return locations.json();
             });

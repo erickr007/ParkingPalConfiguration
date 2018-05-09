@@ -70,11 +70,12 @@ namespace ParkingPalAPI.Services
             p2.Title = "Airport Terminal Parking";
             p2.Website = "http://airportparksd.com";
 
-            locations.AddRange(new[] { p1, p2 });
+            //locations.Add(p1);
+            //locations.Add(p2);
 
             #endregion
 
-            /*
+            
             string selectCommand = "SELECT GlobalID, Title, Address, Latitude, Longitude, ParkingType, HasValet, Description, Website FROM ParkingLocations";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
@@ -94,8 +95,8 @@ namespace ParkingPalAPI.Services
                             if(!reader.IsDBNull(2))
                                 location.Address = reader.GetString(2);
 
-                            location.Latitude = reader.GetFloat(3);
-                            location.Longitude = reader.GetFloat(4);
+                            location.Latitude = reader.GetDouble(3);
+                            location.Longitude = reader.GetDouble(4);
                             location.ParkingType = (ParkingTypes)reader.GetInt32(5);
                             location.HasValet = reader.GetBoolean(6);
 
@@ -112,7 +113,7 @@ namespace ParkingPalAPI.Services
                     }
                 }
             }
-            */
+            
 
             return locations;
         }
@@ -122,20 +123,20 @@ namespace ParkingPalAPI.Services
         {
             ParkingLocation location = new ParkingLocation();
 
-            #region Mock Location
+            //#region Mock Location
 
-            location.Address = "5160 Carroll Canyon Rd";
-            location.GlobalID = Guid.NewGuid().ToString();
-            location.HasValet = false;
-            location.Latitude = -117.5241;
-            location.Longitude = 32.9154;
-            location.ParkingType = ParkingTypes.Street;
-            location.Title = "San Diego City Metered Parking";
-            location.Website = "http://sandiegometered.com";
+            //location.Address = "5160 Carroll Canyon Rd";
+            //location.GlobalID = Guid.NewGuid().ToString();
+            //location.HasValet = false;
+            //location.Latitude = -117.5241;
+            //location.Longitude = 32.9154;
+            //location.ParkingType = ParkingTypes.Street;
+            //location.Title = "San Diego City Metered Parking";
+            //location.Website = "http://sandiegometered.com";
 
-            #endregion
+            //#endregion
 
-            /*
+            
             string selectCommand = "SELECT GlobalID, Title, Address, Latitude, Longitude, ParkingType, HasValet, Description, Website FROM ParkingLocations ";
             selectCommand += "WHERE GlobalID = @GlobalID";
 
@@ -172,17 +173,19 @@ namespace ParkingPalAPI.Services
                     }
                 }
             }
-            */
+            
 
             return location;
         }
 
 
-        public List<ParkingLocation> GetLocationsWithinEnvelope()
+        public List<ParkingLocation> GetLocationsWithinEnvelope(Envelope envelope)
         {
             List<ParkingLocation> locations = new List<ParkingLocation>();
 
-            string selectCommand = "SELECT * FROM ParkingLocations WHERE @Envelope.STContains(LocationPoint)";
+            //string selectCommand = "SELECT * FROM ParkingLocations WHERE geography::STPolyFromText('@Envelope', @Wkid).STContains(LocationPoint) = 0";
+            //string selectCommand = "SELECT GlobalID, Title, Address, Description, HasValet, Latitude, Longitude, ParkingType, Website, DateCreated FROM ParkingLocations WHERE geography::STPointFromText('POINT(' + CAST(Longitude as VARCHAR(20)) + ' ' + CAST(Latitude as VARCHAR(20)) + ')',4326).STWithin(geography::STPolyFromText('@Envelope', @Wkid)) = 0";
+            string selectCommand = "getLocationsWithinEnvelope";
             //32.709528, -117.170906
             //32.710729, -117.128088
             //32.739684, -117.128903
@@ -193,12 +196,48 @@ namespace ParkingPalAPI.Services
                 connection.Open();
                 using(SqlCommand command = new SqlCommand(selectCommand, connection))
                 {
-                    SqlParameter envelopeParam = new SqlParameter("@Envelope", "POLYGON((-117.170906 32.709528, -117.128088 32.710729,-117.128903 32.739684,-117.180230 32.744172), 4326)");
-                    command.Parameters.Add(envelopeParam);
+                    //SqlParameter envelopeParam = new SqlParameter("@Envelope", $"POLYGON(({envelope.Xmin} {envelope.Ymin}, {envelope.Xmin} {envelope.Ymax}, {envelope.Xmax} {envelope.Ymax}, {envelope.Xmax} {envelope.Ymin}, {envelope.Xmin} {envelope.Ymin}))");
+                    //SqlParameter wkidParam = new SqlParameter("@Wkid", envelope.Wkid);
+                    //"POLYGON((-117.170906 32.709528, -117.128088 32.710729,-117.128903 32.739684,-117.180230 32.744172,-117.170906 32.709528)), 4326)");
+                    //command.Parameters.Add(envelopeParam);
+                    //command.Parameters.Add(wkidParam);
+
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = selectCommand;
+
+                    SqlParameter xmin = new SqlParameter("@xmin", envelope.Xmin);
+                    SqlParameter xmax = new SqlParameter("@xmax", envelope.Xmax);
+                    SqlParameter ymin = new SqlParameter("@ymin", envelope.Ymin);
+                    SqlParameter ymax = new SqlParameter("@ymax", envelope.Ymax);
+
+                    command.Parameters.AddRange(new[] { xmin, xmax, ymin, ymax });
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                            while (reader.Read())
+                            {
+                                ParkingLocation location = new ParkingLocation();
+                                location.GlobalID = reader.GetGuid(0).ToString();
+                                location.Title = reader.GetString(1);
 
+                                if (!reader.IsDBNull(2))
+                                    location.Address = reader.GetString(2);
+
+                            location.HasValet = reader.GetBoolean(4);
+
+                            if (!reader.IsDBNull(3))
+                                location.Description = reader.GetString(3);
+
+                            location.Latitude = reader.GetDouble(5);
+                                location.Longitude = reader.GetDouble(6);
+                                location.ParkingType = (ParkingTypes)reader.GetInt32(7);
+
+                                if (!reader.IsDBNull(8))
+                                    location.Website = reader.GetString(8);
+
+                                locations.Add(location);
+
+                            }
                     }
                 }
             }

@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router'
 import { AppComponent } from './components/app/app.component'
 import { HomeComponent } from './components/home/home.component'
 
+import { HomeResolver } from './components/home/home.resolver'
+
 @NgModule({
   declarations: [
       AppComponent,
@@ -21,12 +23,12 @@ import { HomeComponent } from './components/home/home.component'
       HttpModule,
       ParkingLocationsModule,
       RouterModule.forRoot([
-          { path: "home", component: HomeComponent },
+        { path: "home", component: HomeComponent, resolve: { locations: HomeResolver } },
           { path: "", redirectTo: 'home', pathMatch: "full" },
           { path: "**", redirectTo: 'home' }
       ])
   ],
-  providers: [],
+  providers: [ HomeResolver ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

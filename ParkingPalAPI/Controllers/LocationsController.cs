@@ -34,8 +34,8 @@ namespace ParkingPalAPI.Controllers
         /// <summary>
         /// Returns all existing Locations
         /// </summary>
-        [Route("")]
-        public List<ParkingLocation> Get()
+        [HttpGet("")]
+        public List<ParkingLocation> GetAllLocations()
         {
             return _dataAccessService.GetAllLocations();
         }
@@ -43,11 +43,25 @@ namespace ParkingPalAPI.Controllers
         /// <summary>
         /// Returns a Location with the specified id
         /// </summary>
-        //[Route("{id:string}", Name="GetID")]
-        //public ParkingLocation Get(string id)
-        //{
-        //    return _dataAccessService.GetParkingLocation(id);
-        //}
+        [HttpGet("{id}")]
+        public ParkingLocation GetLocationByID(string id)
+        {
+            return _dataAccessService.GetParkingLocation(id);
+        }
+
+        [HttpPost("envelope")]
+        public List<ParkingLocation> GetLocationsByEnvelope([FromBody]Envelope envelope)
+        {
+            List<ParkingLocation> locations = new List<ParkingLocation>();
+            //Envelope envelope = new Envelope();
+            //envelope.Xmin = -118.180230;
+            //envelope.Xmax = -116.128088;
+            //envelope.Ymin = 31.709528;
+            //envelope.Ymax = 33.739684;
+            locations = _dataAccessService.GetLocationsWithinEnvelope(envelope);
+
+            return locations;
+        }
 
         #endregion
 
