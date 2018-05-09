@@ -29,6 +29,7 @@ import { ParkingLocationsResolver } from "./services/locations/parkinglocations.
       Ng2AutoCompleteModule,
       RouterModule.forChild([
         { path: "addlocation", component: AddLocationComponent },
+        { path: "addlocation/:id", component: AddLocationComponent },
         { path: "locations", component: LocationsComponent, resolve: ParkingLocationsResolver }
       ])
     ]

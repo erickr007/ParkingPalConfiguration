@@ -2,7 +2,22 @@
 <div class="container">
 <h2>All locations</h2>
 
-  <div *ngFor="let location of locations">
-    {{location.tt}}
-  </div>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th>Company</th>
+      <th>Address</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let location of locations">
+      <td>{{location.tt}}</td>
+      <td>{{location.ad}}</td>
+      <td><a routerLink="/addlocation/{{location.gi}}">Details</a></td>
+    </tr>
+  </tbody>
+  
+</table>
+
 </div>

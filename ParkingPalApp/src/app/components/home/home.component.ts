@@ -16,4 +16,6 @@ export class HomeComponent implements OnInit{
     ngOnInit() {
       this.locations = this.route.snapshot.data.locations;
     }
+
+    
 }
