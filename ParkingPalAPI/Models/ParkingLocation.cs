@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -13,6 +14,7 @@ namespace ParkingPalAPI.Models
 
         #region Private Properties
 
+        private int _id;
         private string _globalID;
         private string _title;
         private string _address;
@@ -27,6 +29,13 @@ namespace ParkingPalAPI.Models
 
 
         #region Public Properties
+
+        [Key]
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
 
         [JsonProperty(PropertyName = "gi")]
         public string GlobalID
