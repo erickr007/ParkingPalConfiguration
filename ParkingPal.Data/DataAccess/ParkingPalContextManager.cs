@@ -34,11 +34,6 @@ namespace ParkingPal.Data.DataAccess
             return location.First();
         }
 
-        #endregion
-
-
-        #region INSERT
-
         public List<ParkingLocations> GetLocationsWithinEnvelope(Envelope envelope)
         {
             string selectCommand = "getLocationsWithinEnvelope";
@@ -55,5 +50,31 @@ namespace ParkingPal.Data.DataAccess
 
         #endregion
 
-    }
+
+        #region INSERT
+
+        public void InsertParkingLocation(ParkingLocations location)
+        {
+            _context.ParkingLocations.Add(location);
+
+            _context.SaveChanges();
+        }
+
+        #endregion
+
+
+        #region DELETE
+
+        public void DeleteParkingLocation(string globalid)
+        {
+            ParkingLocations location = new ParkingLocations() { GlobalId = new Guid(globalid)};
+
+            _context.ParkingLocations.Attach(location);
+            _context.Remove<ParkingLocations>(location);
+            _context.SaveChanges();
+        }
+
+            #endregion
+
+        }
 }

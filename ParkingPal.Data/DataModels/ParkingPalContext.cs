@@ -21,6 +21,8 @@ namespace ParkingPal.Data
         {
             modelBuilder.Entity<ParkingLocations>(entity =>
             {
+                entity.HasKey(e => e.GlobalId);
+
                 entity.Property(e => e.Address)
                     .IsRequired()
                     .HasMaxLength(200);
