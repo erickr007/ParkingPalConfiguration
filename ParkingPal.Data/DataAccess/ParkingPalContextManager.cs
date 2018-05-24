@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Extensions;
+using ParkingPal.Data.Interfaces;
 
 namespace ParkingPal.Data.DataAccess
 {
-    public class ParkingPalContextManager
+    public class ParkingPalContextManager : IParkingLocationDataAccess
     {
         private ParkingPalContext _context;
         public ParkingPalContextManager(ParkingPalContext context)
@@ -27,7 +28,7 @@ namespace ParkingPal.Data.DataAccess
         public ParkingLocations GetParkingLocationById(string id)
         {
             var location = from pl in _context.ParkingLocations
-                           where pl.Id.ToString().ToLower() == id.ToLower()
+                           where pl.GlobalId.ToString().ToLower() == id.ToLower()
                            select pl;
 
 

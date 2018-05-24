@@ -1,23 +1,27 @@
 
 <div class="container">
-<h2>All locations</h2>
+  <h2>All locations</h2>
 
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th>Company</th>
-      <th>Address</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let location of locations">
-      <td>{{location.tt}}</td>
-      <td>{{location.ad}}</td>
-      <td><a routerLink="/addlocation/{{location.gi}}">Details</a></td>
-    </tr>
-  </tbody>
-  
-</table>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Company</th>
+        <th>Address</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let location of locations">
+        <td>{{location.tt}}</td>
+        <td>{{location.ad}}</td>
+        <td><a routerLink="/addlocation/{{location.gi}}">Details</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <ul class="pagination">
+    <li *ngFor="let page of pages;" class="page-item">
+      <a class="page-link" href="javascript:void(0);" (click)="loadPages(page)">{{page + 1}}</a>
+    </li>
+  </ul>
 
 </div>

@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParkingPalAPI", "ParkingPal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingPal.Data", "ParkingPal.Data\ParkingPal.Data.csproj", "{83415EAE-91C4-4035-A1E6-AD7925745D2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingPal.Data.Tests", "ParkingPal.Data.Tests\ParkingPal.Data.Tests.csproj", "{764C4E28-26C3-4C11-A916-30B7ED20CC8F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{83415EAE-91C4-4035-A1E6-AD7925745D2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83415EAE-91C4-4035-A1E6-AD7925745D2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83415EAE-91C4-4035-A1E6-AD7925745D2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{764C4E28-26C3-4C11-A916-30B7ED20CC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764C4E28-26C3-4C11-A916-30B7ED20CC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764C4E28-26C3-4C11-A916-30B7ED20CC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764C4E28-26C3-4C11-A916-30B7ED20CC8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
